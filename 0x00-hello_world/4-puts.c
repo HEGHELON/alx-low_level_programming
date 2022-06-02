@@ -3,8 +3,7 @@
 
 
 /*
-  main - print the string in the put function
-
+ *  main - print the string in the put function
 */
 
 int main(void)
