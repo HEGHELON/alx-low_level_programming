@@ -9,10 +9,10 @@
  */
 int main(void)
 {
-int n;
+char n;
 
-for (n  = 9; n >= 0; n--)
-putchar(n + '0');
+for (n  = 'z'; n >= 'a'; n--)
+putchar(n);
 putchar('\n');
 return (0);
 }
