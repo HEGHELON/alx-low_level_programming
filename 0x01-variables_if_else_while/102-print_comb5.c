@@ -1,11 +1,12 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ *main - Entry point
  *
- * Result: Always (0) on success
- */
-
+ *Description: This program output unordered two digits
+ *
+ *Return: Always 0 (Success)
+*/
 int main(void)
 {
 	int ifirst;
