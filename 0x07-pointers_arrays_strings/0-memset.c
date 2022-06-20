@@ -1,22 +1,18 @@
-#incude "main.h"
+#include "main.h"
+
 /**
- * _memset - fills n bytes of memory
- *
- * @s: pointer to start of memory area
- * @b: constant byte to fill with
- * @n: num bytes to fill in
- *
- * Return: pointer to beginning of memory area s
+ * _memset - memset function
+ * @s: start point of string to change
+ * @b: value that will replace
+ * @n: number of bytes to change
+ * Return: changed pointer
  */
+
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i = 0;
-	char *start = s;
+	char *p = s;
 
-	while (i < n)
-	{
-		*s++ = b;
-		i++;
-	}
-	return (start);
+	for (; n != 0; p++, n--)
+		*p = b;
+	return (s);
 }
