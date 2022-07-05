@@ -1,53 +1,51 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "dog.h"
-int get_len(int i);
-char *str_cpy(char *dest, char *src);
+
 /**
- * new_dog - a function that creates a new dog
- * get len of name + owner, malloc them, cpy name + owner to new
- * @name: name
- * @age: age
- * @owner: owner
- * Return: 0
+ * new_dog - write a function that creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ * Return: new dog
  */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_name;
-	char *copy_name, *copy_owner;
-	unsigned int x, name_len = 0, owner_len = 0;
+	dog_t *ptr;
+	char *cname, *cowner;
+	int len1, len2, i;
 
-	new_name = malloc(sizeof(dog_t));
-	if (name == NULL)
+	ptr = malloc(sizeof(dog_t));
+	if (!ptr)
 		return (NULL);
-	if (name == NULL || age <= 0 || owner == NULL)
+	for (len1 = 0; name[len1]; len1++)
+		;
+	for (len2 = 0; owner[len2]; len2++)
+		;
+	len1++;
+	len2++;
+	cname = malloc(len1);
+	if (!cname)
 	{
-		free(new_name);
+		free(ptr);
 		return (NULL);
 	}
-
-	for (x = 0; name[x] != '\0'; x++)
-		name_len++;
-
-	for (x = 0; owner[x] != '\0'; x++)
-		owner_len++;
-
-	copy_name = malloc(sizeof(char) * (name_len + 1));
-	if (copy_name == NULL)
+	cowner = malloc(len2);
+	if (!cowner)
+	{
+		free(cname);
+		free(ptr);
 		return (NULL);
+	}
+	for (i = 0; i < len1; i++)
+		cname[i] = name[i];
+	for (i = 0; i < len2; i++)
+		cowner[i] = owner[i];
 
-	copy_owner = malloc(sizeof(char) * (owner_len + 1));
-	if (copy_owner == NULL)
-		return (NULL);
+	ptr->name = cname;
+	ptr->owner = cowner;
+	ptr->age = age;
 
-	for (x = 0; x <= name_len; x++)
-		copy_name[x] = name[x];
-
-	for (x = 0; x <= owner_len; x++)
-		copy_owner[x] = owner[x];
-
-	new_name->name = copy_name;
-	new_name->owner = copy_owner;
-	new_name->age = age;
-	return (new_name);
+	return (ptr);
 }
