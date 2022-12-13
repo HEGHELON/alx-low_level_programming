@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _isalpha - checks for alphabetic characters
+ * _islower - checks for lower alphabetic characters
  * @c: character to check
  *
  * Return: 0 or 1
  */
 
-int _isalpha(int c)
+int _islower(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (1);
